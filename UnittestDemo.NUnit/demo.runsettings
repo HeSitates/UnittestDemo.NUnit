@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <!-- Configurations that affect the Test Framework -->
+  <RunConfiguration>
+    <!-- Path relative to solution directory -->
+    <!-- <ResultsDirectory>.\TestResults</ResultsDirectory> -->
+
+    <!-- [x86] | x64  
+      - You can also change it from menu Test, Test Settings, Default Processor Architecture -->
+    <!-- <TargetPlatform>x86</TargetPlatform> -->
+
+    <!-- Framework35 | [Framework40] | Framework45 -->
+    <!-- <TargetFrameworkVersion>Framework40</TargetFrameworkVersion> -->
+
+    <SkipExecutionWhenNoTests>true></SkipExecutionWhenNoTests>
+
+    <EnvironmentVariables>
+      <!-- 
+        List of environment variables we want to set
+        Note: not all variables can be set here. E.g. setting:
+            - SystemRoot will result in an inconclusive test.
+            - DOTNET_ROOT will crash the test.
+      -->
+      <ANewVar>dotnet</ANewVar>
+      <HOMEDRIVE>D:</HOMEDRIVE>
+    </EnvironmentVariables>
+  </RunConfiguration>
+
+  <!-- Parameters used by tests at runtime -->
+  <TestRunParameters>
+    <Parameter name="webAppUrl" value="http://localhost" />
+    <Parameter name="webAppUserName" value="Admin" />
+    <Parameter name="webAppPassword" value="Password" />
+  </TestRunParameters>
+
+  <!-- Adapter Specific sections -->
+  <NUnit>
+    <!--
+    <BasePath>D:\Dev\NUnit\nunit3-vs-adapter\demo\NUnitTestDemo\bin\Release</BasePath>
+    <PrivateBinPath>extras;more.extras</PrivateBinPath>
+    <DefaultTimeout>5000</DefaultTimeout>
+    <WorkDirectory>work</WorkDirectory>
+    <InternalTraceLevel>Info</InternalTraceLevel>
+    <RandomSeed>1234567</RandomSeed>
+    -->
+  </NUnit>
+
+</RunSettings>
