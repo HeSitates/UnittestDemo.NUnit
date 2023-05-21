@@ -225,12 +225,8 @@ dotnet_diagnostic.ca1822.severity = warning   # Increase visibility for Member '
 dotnet_diagnostic.cs8785.severity = error     # Do not hide root cause for: Generator 'xxx' failed to generate source. It will not contribute to the output and compilation errors may occur as a result. Exception was of type 'xxx' with message 'xxx'
 dotnet_diagnostic.rs2008.severity = none      # Enable analyzer release tracking - we don't use the release tracking analyzer
 
-# This should be removed in https://github.com/SonarSource/sonar-dotnet/issues/3364
-# RS1010: Provide an explicit argument for optional parameter 'equivalenceKey', which is non-null and unique across all code actions created by this fixer.
-dotnet_diagnostic.rs1010.severity = none
-
 # ----------------------------------------------------------------------------------------------------------------------
-# SyleCop.Analyzers rules - note that the URLs below are for tag 1.1.118
+# SyleCop.Analyzers rules
 # ----------------------------------------------------------------------------------------------------------------------
 
 # Special Rules (SA0000-) https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SpecialRules.md
@@ -262,6 +258,7 @@ dotnet_diagnostic.sa1515.severity = none      # A single-line comment within C# 
 
 dotnet_diagnostic.sa1600.severity = none      # A C# code element is missing a documentation header.
 dotnet_diagnostic.sa1602.severity = none      # An item within a C# enumeration is missing an Xml documentation header.
+dotnet_diagnostic.sa1604.severity = none      # The Xml header documentation for a C# element is missing a <summary> tag.
 dotnet_diagnostic.sa1633.severity = none      # The file header is missing or not located at the top of the file.
 
 # IDE0046: Use conditional expression for return
