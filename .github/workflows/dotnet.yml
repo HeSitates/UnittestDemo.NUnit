@@ -28,16 +28,17 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
+    - name: Install sonarscanner
+      run: dotnet tool install --global dotnet-sonarscanner
+
     - name: Sonarqube Begin
-      run: | 
-        dotnet tool install --global dotnet-sonarscanner
-        dotnet sonarscanner begin /o:"hesitates" /k:"HeSitates_UnittestDemo.NUnit" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
+      run: dotnet sonarscanner begin /o:"${{ vars.SonarOrganizationKey }}" /k:"${{ vars.SonarProjectKey }}" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
 
     - name: Build
       run: dotnet build --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal --settings coverlet.runsettings --logger:trx
+      run: dotnet test --no-build --verbosity normal --settings coverlet.runsettings --logger:trx --collect "Code Coverage"
 
     - name: Sonarqube end
       run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
