@@ -16,7 +16,7 @@ internal class TestContextParametersTests
 
     var testContextParameters = TestContext.Parameters;
 
-    if (!UnitTestDetector.IsRunningFromMicrosoftTest && !UnitTestDetector.IsRunningFromReSharper)
+    if (!UnitTestDetector.IsRunningFromReSharper)
     {
       Assert.That(testContextParameters.Count, Is.Zero);
       return;

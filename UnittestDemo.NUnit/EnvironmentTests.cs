@@ -2,7 +2,7 @@
 
 public class EnvironmentTests
 {
-  private List<DictionaryEntry> _environmentVariables;
+  private List<DictionaryEntry> _environmentVariables = null!;
 
   [OneTimeSetUp]
   public void OneTimeSetUp() =>
@@ -21,7 +21,7 @@ public class EnvironmentTests
     });
 
     // Running test with nunit3-console does not read the .runsettings file, so exclude thoses tests.
-    if (!UnitTestDetector.IsRunningFromMicrosoftTest && !UnitTestDetector.IsRunningFromReSharper)
+    if (!UnitTestDetector.IsRunningFromReSharper)
     {
       AssertAndNullValue(_environmentVariables, "ANewVar");
       return;
