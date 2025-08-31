@@ -9,10 +9,10 @@
 public class MySetUpClassOutsideOfNamespace : UnittestDemo.NUnit.FlowCounterBase
 {
   [OneTimeSetUp]
-  public void RunBeforeAnyTests() => TestContext.WriteLine($"{Counter}: OneTimeSetUp {TestContext.CurrentContext.Test.FullName}");
+  public void RunBeforeAnyTests() => TestContext.Out.WriteLine($"{Counter}: OneTimeSetUp {TestContext.CurrentContext.Test.FullName}");
 
   [OneTimeTearDown]
-  public void RunAfterAnyTests() => TestContext.WriteLine($"{Counter}: OneTimeTearDown {TestContext.CurrentContext.Test.FullName}");
+  public void RunAfterAnyTests() => TestContext.Out.WriteLine($"{Counter}: OneTimeTearDown {TestContext.CurrentContext.Test.FullName}");
 }
 
 #pragma warning disable SA1201
@@ -29,10 +29,10 @@ namespace UnittestDemo.NUnit
   public class MySetUpClass : FlowCounterBase
   {
     [OneTimeSetUp]
-    public void RunBeforeAnyTests() => TestContext.WriteLine($"{Counter}: OneTimeSetUp {TestContext.CurrentContext.Test.FullName}");
+    public void RunBeforeAnyTests() => TestContext.Out.WriteLine($"{Counter}: OneTimeSetUp {TestContext.CurrentContext.Test.FullName}");
 
     [OneTimeTearDown]
-    public void RunAfterAnyTests() => TestContext.WriteLine($"{Counter}: OneTimeTearDown {TestContext.CurrentContext.Test.FullName}");
+    public void RunAfterAnyTests() => TestContext.Out.WriteLine($"{Counter}: OneTimeTearDown {TestContext.CurrentContext.Test.FullName}");
   }
 
   internal class TestFlowTests : FlowCounterBase
@@ -41,21 +41,21 @@ namespace UnittestDemo.NUnit
     private int _teardownCounter = 1;
 
     [OneTimeSetUp]
-    public void OneTimeSetUp() => TestContext.WriteLine($"{Counter}: OneTimeSetUp {TestContext.CurrentContext.Test.FullName}");
+    public void OneTimeSetUp() => TestContext.Out.WriteLine($"{Counter}: OneTimeSetUp {TestContext.CurrentContext.Test.FullName}");
 
     [OneTimeTearDown]
-    public void OneTimeTearDown() => TestContext.WriteLine($"{Counter}: OneTimeTearDown {TestContext.CurrentContext.Test.FullName}");
+    public void OneTimeTearDown() => TestContext.Out.WriteLine($"{Counter}: OneTimeTearDown {TestContext.CurrentContext.Test.FullName}");
 
     [SetUp]
-    public void SetUp() => TestContext.WriteLine($"{Counter}: SetUp {TestContext.CurrentContext.Test.Name} - Count: {_setUpCounter++}");
+    public void SetUp() => TestContext.Out.WriteLine($"{Counter}: SetUp {TestContext.CurrentContext.Test.Name} - Count: {_setUpCounter++}");
 
     [TearDown]
-    public void TearDown() => TestContext.WriteLine($"{Counter}: TearDown {TestContext.CurrentContext.Test.Name} - Count: {_teardownCounter++}");
+    public void TearDown() => TestContext.Out.WriteLine($"{Counter}: TearDown {TestContext.CurrentContext.Test.Name} - Count: {_teardownCounter++}");
 
     [Test]
     public void Test1()
     {
-      TestContext.WriteLine($"{Counter}: {TestContext.CurrentContext.Test.Name}");
+      TestContext.Out.WriteLine($"{Counter}: {TestContext.CurrentContext.Test.Name}");
       Assert.Pass("Ok\n");
     }
 
@@ -64,7 +64,7 @@ namespace UnittestDemo.NUnit
     [TestCase(3)]
     public void Test2(int number)
     {
-      TestContext.WriteLine($"{Counter}: {TestContext.CurrentContext.Test.Name}");
+      TestContext.Out.WriteLine($"{Counter}: {TestContext.CurrentContext.Test.Name}");
       TestContext.Progress.WriteLine($"number: {number}");
       Assert.Pass("Ok\n");
     }
@@ -72,7 +72,7 @@ namespace UnittestDemo.NUnit
     [TestCaseSource(nameof(SetOfStrings))]
     public void Test3(ICollection<string> list)
     {
-      TestContext.WriteLine($"{Counter}: {TestContext.CurrentContext.Test.Name}");
+      TestContext.Out.WriteLine($"{Counter}: {TestContext.CurrentContext.Test.Name}");
       Assert.That(list, Is.Not.Empty);
     }
 

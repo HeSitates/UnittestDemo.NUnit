@@ -27,8 +27,8 @@ public class XmlDiffTests
             new XElement("State", "WA"),
             new XElement("Postal", "68042"))));
 
-    TestContext.WriteLine(doc.SelectSingleNode("Contacts")?.InnerXml);
-    TestContext.WriteLine(contactsAsXElement.ToXmlNode());
+    TestContext.Out.WriteLine(doc.SelectSingleNode("Contacts")?.InnerXml);
+    TestContext.Out.WriteLine(contactsAsXElement.ToXmlNode());
 
     var xmlDiff = new XmlDiff(XmlDiffOptions.IgnoreWhitespace);
     var result = xmlDiff.Compare(doc.SelectSingleNode("Contacts"), contactsAsXElement.ToXmlNode());

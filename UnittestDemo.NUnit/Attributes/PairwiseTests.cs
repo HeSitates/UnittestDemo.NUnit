@@ -9,6 +9,7 @@ internal class PairwiseTests
     [Values("+", "-")] string b,
     [Values("x", "y")] string c)
   {
-    Assert.Pass("{0} {1} {2}", a, b, c);
+    TestContext.Out.WriteLine("{0} {1} {2}", a, b, c);
+    Assert.Pass();
   }
 }
