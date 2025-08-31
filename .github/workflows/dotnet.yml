@@ -51,6 +51,7 @@ jobs:
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         run: |
           #New-Item -Path .\.sonar\scanner -ItemType Directory
+          mkdir -p .\.sonar\scanner
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
       - name: Restore dependencies
@@ -58,7 +59,7 @@ jobs:
 
       - name: Sonarqube Begin
         run: | 
-          dotnet tool install --global dotnet-sonarscanner
+          dotnet tool install --global dotnet-sonarscanner /d:sonar.scanner.skipJreProvisioning=true
           dotnet sonarscanner begin /o:"hesitates" /k:"HeSitates_UnittestDemo.NUnit" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
 
       - name: Build and analyze
