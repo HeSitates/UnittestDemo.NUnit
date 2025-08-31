@@ -8,7 +8,7 @@ public class StringTests
   [TestCase("", "")]
   [TestCase("Homer", "Homer")]
   [TestCase("Homer", "homer", true)]
-  public void EqualToExample(string target, string expectedValue, bool ignoreCase = false)
+  public void EqualToExample(string? target, string? expectedValue, bool ignoreCase = false)
   {
     Assert.That(target, Is.EqualTo(expectedValue).IgnoreCase);
     if (ignoreCase)
@@ -22,7 +22,7 @@ public class StringTests
   [TestCase(null, null, null)]
   [TestCase("", "", "")]
   [TestCase("iptal", "IPTAL", "İPTAL")]
-  public void EqualToIgnoreCaseExample(string? target, string? expectedValue, string expectedTurkishValue)
+  public void EqualToIgnoreCaseExample(string? target, string? expectedValue, string? expectedTurkishValue)
   {
     static bool BeEquivalentTo(string? value, string? valueToCompare, CultureInfo cultureInfo) => string.Compare(value, valueToCompare, cultureInfo, CompareOptions.IgnoreCase) == 0;
 
@@ -53,11 +53,11 @@ public class StringTests
   [TestCase("")]
   [TestCase("bart")]
   [TestCase("Homer")]
-  public void NotEqualToExample(string validValue)
+  public void NotEqualToExample(string? validValue)
   {
-    const string Target = "Bart";
+    const string target = "Bart";
 
-    Assert.That(Target, Is.Not.EqualTo(validValue));
+    Assert.That(target, Is.Not.EqualTo(validValue));
   }
 
   [TestCase("Homer Simpson", "Homer.*")]

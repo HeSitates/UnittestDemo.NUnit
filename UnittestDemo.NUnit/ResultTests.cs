@@ -6,7 +6,7 @@ public class ResultTests
   [TestCase(null, "Unknown error")]
   [TestCase("", "Unknown error")]
   [TestCase("Hatsikidee")]
-  public void SetErrormessageShouldReturnSuccessIsFalse(string errorMessage, string expectedErrorMessage = "")
+  public void SetErrormessageShouldReturnSuccessIsFalse(string? errorMessage, string? expectedErrorMessage = "")
   {
     if (string.IsNullOrWhiteSpace(expectedErrorMessage))
     {
@@ -28,7 +28,7 @@ public class ResultTests
   [TestCase(null, "Something went wrong.", "Something went wrong.")]
   [TestCase("", "Something went wrong.", "Something went wrong.")]
   [TestCase("Ok", "Something went wrong.", "Ok: Something went wrong.")]
-  public void SetErrormessageShouldReturnSuccessIsFalse(string errorMessage, string exceptionMessage, string expectedErrorMessage)
+  public void SetErrormessageShouldReturnSuccessIsFalse(string? errorMessage, string exceptionMessage, string expectedErrorMessage)
   {
     // Arrange
     var ex = new InvalidOperationException(exceptionMessage);

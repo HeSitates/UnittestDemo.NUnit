@@ -10,7 +10,7 @@ internal class SetCultureTests
   public void DutchDatesExample(DateTime target)
   {
     var ds = $"{target}";
-    TestContext.WriteLine(ds);
+    TestContext.Out.WriteLine(ds);
 
     const string Format = "dd-MM-yyyy HH:mm:ss";
     var parseResult = DateTime.TryParseExact(ds, Format, CultureInfo.CurrentCulture, DateTimeStyles.None, out var output);
@@ -23,7 +23,7 @@ internal class SetCultureTests
   public void TurkishDatesExample(DateTime target)
   {
     var ds = $"{target}";
-    TestContext.WriteLine(ds);
+    TestContext.Out.WriteLine(ds);
 
     const string Format = "d.MM.yyyy HH:mm:ss";
     var parseResult = DateTime.TryParseExact(ds, Format, CultureInfo.CurrentCulture, DateTimeStyles.None, out var output);
@@ -36,7 +36,7 @@ internal class SetCultureTests
   public void AmericanDatesExample(DateTime target)
   {
     var ds = $"{target}";
-    TestContext.WriteLine(ds);
+    TestContext.Out.WriteLine(ds);
 
     const string Format = "M/d/yyyy h:mm:ss tt";
     var parseResult = DateTime.TryParseExact(ds, Format, CultureInfo.CurrentCulture, DateTimeStyles.None, out var output);
@@ -46,9 +46,9 @@ internal class SetCultureTests
 
   private static IEnumerable SetOfDates()
   {
-    yield return new TestCaseData(new DateTime(2023, 4, 1, 1, 2, 3));
-    yield return new TestCaseData(new DateTime(2023, 4, 9, 21, 10, 22));
-    yield return new TestCaseData(new DateTime(2023, 12, 9, 11, 11, 11));
-    yield return new TestCaseData(new DateTime(2023, 12, 19, 22, 22, 22));
+    yield return new TestCaseData(new DateTime(2023, 4, 1, 1, 2, 3, DateTimeKind.Local));
+    yield return new TestCaseData(new DateTime(2023, 4, 9, 21, 10, 22, DateTimeKind.Local));
+    yield return new TestCaseData(new DateTime(2023, 12, 9, 11, 11, 11, DateTimeKind.Local));
+    yield return new TestCaseData(new DateTime(2023, 12, 19, 22, 22, 22, DateTimeKind.Local));
   }
 }

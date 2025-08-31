@@ -17,6 +17,6 @@ internal class DictionaryContainsKeyValuePairConstraintTests
     Assert.That(dictionary, Does.ContainKey("Hi").WithValue("Universe"));
     Assert.That(dictionary, new DictionaryContainsKeyValuePairConstraint("Hi", "Universe"));
     Assert.That(dictionary, new DictionaryContainsKeyValuePairConstraint("HI", "UNIVERSE").IgnoreCase);
-    Assert.That(dictionary, new DictionaryContainsKeyValuePairConstraint("HI", "UNIVERSE").Using<string>((x, y) => StringUtil.Compare(x, y, true)));
+    Assert.That(dictionary, new DictionaryContainsKeyValuePairConstraint("HI", "UNIVERSE").Using<string>((x, y) => string.Compare(x, y, StringComparison.CurrentCultureIgnoreCase)));
   }
 }

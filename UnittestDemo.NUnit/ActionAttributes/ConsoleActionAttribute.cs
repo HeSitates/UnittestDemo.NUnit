@@ -22,7 +22,7 @@ public class ConsoleActionAttribute : Attribute, ITestAction
   {
     var fixtureName = details.Fixture != null ? details.Fixture.GetType().Name : "{no fixture}";
     var methodName = details.Method != null ? details.Method.Name : "{no method}";
-    TestContext.WriteLine(
+    TestContext.Out.WriteLine(
       "{0} {1}: {2}, from {3}.{4}. TestCaseCount: {5}",
       eventMessage,
       details.IsSuite ? "Suite" : "Case",

@@ -8,6 +8,7 @@ public class SequentialTests
     [Values(1, 2, 3)] int x,
     [Values("A", "B")] string s)
   {
-    Assert.Pass("{0} {1}", x, s);
+    TestContext.Out.WriteLine("{0} {1}", x, s);
+    Assert.Pass();
   }
 }
